@@ -1,0 +1,247 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1505" width="1500" height="1505" font-family="Inter, Segoe UI, Roboto, Arial, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="1500" height="1505" fill="#fff"/>
+<text x="40" y="44" font-size="26" fill="#111" font-weight="800" text-anchor="start">UpSense · diagrama de conexiones</text>
+<text x="40" y="68" font-size="14" fill="#555" font-weight="400" text-anchor="start">ESP32 DevKit + PMS5003 + MH-Z19C + BME280 (o BME680) + tira WS2812B. Pines según firmware/include/config.h.</text>
+<text x="40" y="86" font-size="14" fill="#555" font-weight="400" text-anchor="start">El orden de los pines del ESP32 es esquemático: guíate por la serigrafía (GPIO16, GPIO4…) de tu placa.</text>
+<path d="M40,130 L1485,130" fill="none" stroke="#d62828" stroke-width="5" stroke-linejoin="round"/>
+<path d="M40,160 L1485,160" fill="none" stroke="#222" stroke-width="5" stroke-linejoin="round"/>
+<text x="1485" y="122" font-size="13" fill="#d62828" font-weight="700" text-anchor="end">riel 5 V</text>
+<text x="110" y="178" font-size="13" fill="#222" font-weight="700" text-anchor="start">riel GND (todas las tierras unidas)</text>
+<rect x="590" y="96" width="320" height="22" rx="6" fill="#fff4f4" stroke="#d62828"/>
+<text x="750" y="112" font-size="13" fill="#111" font-weight="700" text-anchor="middle">Fuente 5 V ≥ 2 A (cargador USB o adaptador)</text>
+<path d="M700,118 L700,130" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="700" cy="130" r="5" fill="#d62828"/>
+<path d="M800,118 L800,160" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="800" cy="160" r="5" fill="#222"/>
+<rect x="600" y="260" width="300" height="480" rx="12" fill="#eef4ff" stroke="#333" stroke-width="2"/>
+<text x="750.0" y="288" text-anchor="middle" font-size="20" font-weight="700">ESP32 DevKit</text>
+<text x="750.0" y="308" text-anchor="middle" font-size="13" fill="#444">38 pines, WROOM-32</text>
+<rect x="705" y="355" width="90" height="70" rx="6" fill="#cfd8e6" stroke="#556"/>
+<text x="750" y="395" font-size="12" fill="#334" font-weight="400" text-anchor="middle">WROOM</text>
+<rect x="725" y="716" width="50" height="24" rx="4" fill="#bbb" stroke="#555"/>
+<text x="750" y="733" font-size="11" fill="#111" font-weight="400" text-anchor="middle">USB</text>
+<circle cx="600" cy="320" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="612" y="325" font-size="14" text-anchor="start" fill="#111">GND</text>
+<circle cx="600" cy="360" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="612" y="365" font-size="14" text-anchor="start" fill="#e67700">3V3</text>
+<circle cx="600" cy="440" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="612" y="445" font-size="14" text-anchor="start" fill="#111">GPIO22 · SCL</text>
+<circle cx="600" cy="490" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="612" y="495" font-size="14" text-anchor="start" fill="#111">GPIO21 · SDA</text>
+<circle cx="600" cy="620" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="612" y="625" font-size="14" text-anchor="start" fill="#111">GPIO4 · datos LED</text>
+<circle cx="900" cy="320" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="888" y="325" font-size="14" text-anchor="end" fill="#d62828">VIN / 5V</text>
+<circle cx="900" cy="360" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="888" y="365" font-size="14" text-anchor="end" fill="#111">GND</text>
+<circle cx="900" cy="440" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="888" y="445" font-size="14" text-anchor="end" fill="#111">GPIO17 · TX2</text>
+<circle cx="900" cy="490" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="888" y="495" font-size="14" text-anchor="end" fill="#111">GPIO16 · RX2</text>
+<circle cx="900" cy="580" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="888" y="585" font-size="14" text-anchor="end" fill="#111">GPIO26 · RX1</text>
+<circle cx="900" cy="630" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="888" y="635" font-size="14" text-anchor="end" fill="#111">GPIO27 · TX1</text>
+<path d="M900,320 L950,320 L950,130" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="950" cy="130" r="5" fill="#d62828"/>
+<path d="M900,360 L975,360 L975,160" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="975" cy="160" r="5" fill="#222"/>
+<path d="M600,320 L565,320 L565,160" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="565" cy="160" r="5" fill="#222"/>
+<rect x="1130" y="210" width="300" height="300" rx="12" fill="#fff8e6" stroke="#333" stroke-width="2"/>
+<text x="1280.0" y="238" text-anchor="middle" font-size="20" font-weight="700">PMS5003</text>
+<text x="1280.0" y="258" text-anchor="middle" font-size="13" fill="#444">partículas · conector de 8 pines</text>
+<circle cx="1130" cy="270" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="275" font-size="14" text-anchor="start" fill="#d62828">1 VCC (5 V)</text>
+<circle cx="1130" cy="300" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="305" font-size="14" text-anchor="start" fill="#111">2 GND</text>
+<circle cx="1130" cy="330" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="335" font-size="14" text-anchor="start" fill="#888">3 SET (libre)</text>
+<circle cx="1130" cy="360" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="365" font-size="14" text-anchor="start" fill="#111">4 RX</text>
+<circle cx="1130" cy="390" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="395" font-size="14" text-anchor="start" fill="#111">5 TX</text>
+<circle cx="1130" cy="420" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="425" font-size="14" text-anchor="start" fill="#888">6 RESET (libre)</text>
+<circle cx="1130" cy="450" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="455" font-size="14" text-anchor="start" fill="#888">7, 8 NC</text>
+<path d="M1130,270 L1090,270 L1090,130" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1090" cy="130" r="5" fill="#d62828"/>
+<path d="M1130,300 L1110,300 L1110,160" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1110" cy="160" r="5" fill="#222"/>
+<path d="M1130,360 L1010,360 L1010,440 L900,440" fill="none" stroke="#4dabf7" stroke-width="3" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<path d="M1130,390 L1050,390 L1050,490 L900,490" fill="none" stroke="#1c7ed6" stroke-width="3" stroke-linejoin="round"/>
+<text x="1280" y="480" font-size="12" fill="#666" font-weight="400" text-anchor="middle">RX es opcional (punteado). Lógica 3.3 V:</text>
+<text x="1280" y="496" font-size="12" fill="#666" font-weight="400" text-anchor="middle">va directo al ESP32, sin convertidor.</text>
+<rect x="1130" y="555" width="300" height="210" rx="12" fill="#eefbf0" stroke="#333" stroke-width="2"/>
+<text x="1280.0" y="583" text-anchor="middle" font-size="20" font-weight="700">MH-Z19C</text>
+<text x="1280.0" y="603" text-anchor="middle" font-size="13" fill="#444">CO₂ NDIR · UART 9600</text>
+<circle cx="1130" cy="610" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="615" font-size="14" text-anchor="start" fill="#111">TX</text>
+<circle cx="1130" cy="660" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1142" y="665" font-size="14" text-anchor="start" fill="#111">RX</text>
+<circle cx="1430" cy="640" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1418" y="645" font-size="14" text-anchor="end" fill="#d62828">Vin (5 V)</text>
+<circle cx="1430" cy="690" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="1418" y="695" font-size="14" text-anchor="end" fill="#111">GND</text>
+<path d="M1430,640 L1455,640 L1455,130" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1455" cy="130" r="5" fill="#d62828"/>
+<path d="M1430,690 L1475,690 L1475,160" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1475" cy="160" r="5" fill="#222"/>
+<path d="M1130,610 L1050,610 L1050,580 L900,580" fill="none" stroke="#2b8a3e" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1130,660 L1010,660 L1010,630 L900,630" fill="none" stroke="#69db7c" stroke-width="3" stroke-linejoin="round"/>
+<text x="1280" y="735" font-size="12" fill="#666" font-weight="400" text-anchor="middle">HD, PWM y Vo sin conectar.</text>
+<text x="1280" y="751" font-size="12" fill="#666" font-weight="400" text-anchor="middle">Necesita 5 V estables (4.9 a 5.1 V).</text>
+<rect x="110" y="210" width="270" height="275" rx="12" fill="#f3f0ff" stroke="#333" stroke-width="2"/>
+<text x="245.0" y="238" text-anchor="middle" font-size="20" font-weight="700">BME280 (o BME680)</text>
+<text x="245.0" y="258" text-anchor="middle" font-size="13" fill="#444">temp · humedad · presión · I²C</text>
+<circle cx="380" cy="290" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="368" y="295" font-size="14" text-anchor="end" fill="#111">GND</text>
+<circle cx="380" cy="330" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="368" y="335" font-size="14" text-anchor="end" fill="#e67700">VIN / VCC (3.3 V)</text>
+<circle cx="380" cy="380" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="368" y="385" font-size="14" text-anchor="end" fill="#111">SCL</text>
+<circle cx="380" cy="420" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="368" y="425" font-size="14" text-anchor="end" fill="#111">SDA</text>
+<path d="M380,290 L405,290 L405,160" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="405" cy="160" r="5" fill="#222"/>
+<path d="M380,330 L450,330 L450,360 L600,360" fill="none" stroke="#e67700" stroke-width="3" stroke-linejoin="round"/>
+<path d="M380,380 L510,380 L510,440 L600,440" fill="none" stroke="#7048e8" stroke-width="3" stroke-linejoin="round"/>
+<path d="M380,420 L480,420 L480,490 L600,490" fill="none" stroke="#9775fa" stroke-width="3" stroke-linejoin="round"/>
+<text x="245.0" y="437" font-size="13" fill="#e67700" font-weight="700" text-anchor="middle">¡A 3.3 V, no a 5 V!</text>
+<text x="245.0" y="455" font-size="12" fill="#666" font-weight="400" text-anchor="middle">Dirección 0x76 o 0x77.</text>
+<text x="245.0" y="471" font-size="12" fill="#666" font-weight="400" text-anchor="middle">Junto a la entrada de aire del PMS5003.</text>
+<rect x="110" y="590" width="270" height="200" rx="12" fill="#fff0f6" stroke="#333" stroke-width="2"/>
+<text x="245.0" y="618" text-anchor="middle" font-size="20" font-weight="700">Tira WS2812B</text>
+<text x="245.0" y="638" text-anchor="middle" font-size="13" fill="#444">8 LEDs</text>
+<rect x="126" y="650" width="24" height="24" rx="4" fill="#2f9e44" stroke="#555"/>
+<rect x="156" y="650" width="24" height="24" rx="4" fill="#2f9e44" stroke="#555"/>
+<rect x="186" y="650" width="24" height="24" rx="4" fill="#f59f00" stroke="#555"/>
+<rect x="216" y="650" width="24" height="24" rx="4" fill="#f59f00" stroke="#555"/>
+<rect x="246" y="650" width="24" height="24" rx="4" fill="#e03131" stroke="#555"/>
+<rect x="276" y="650" width="24" height="24" rx="4" fill="#e03131" stroke="#555"/>
+<rect x="306" y="650" width="24" height="24" rx="4" fill="#9c36b5" stroke="#555"/>
+<rect x="336" y="650" width="24" height="24" rx="4" fill="#ced4da" stroke="#555"/>
+<circle cx="110" cy="700" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="122" y="705" font-size="14" text-anchor="start" fill="#d62828">5V</text>
+<circle cx="110" cy="750" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="122" y="755" font-size="14" text-anchor="start" fill="#111">GND</text>
+<circle cx="380" cy="725" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="368" y="730" font-size="14" text-anchor="end" fill="#111">DIN</text>
+<path d="M110,700 L75,700 L75,130" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="75" cy="130" r="5" fill="#d62828"/>
+<path d="M110,750 L50,750 L50,160" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="50" cy="160" r="5" fill="#222"/>
+<path d="M75,700 L75,835" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round"/>
+<path d="M50,750 L50,835" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="75" cy="700" r="5" fill="#d62828"/>
+<circle cx="50" cy="750" r="5" fill="#222"/>
+<rect x="30" y="835" width="160" height="40" rx="6" fill="#e7f5ff" stroke="#1971c2" stroke-width="2"/>
+<text x="110" y="852" font-size="12" fill="#111" font-weight="700" text-anchor="middle">Condensador 1000 µF</text>
+<text x="110" y="867" font-size="11" fill="#333" font-weight="400" text-anchor="middle">≥ 6.3 V, + al 5V, − al GND</text>
+<path d="M380,725 L425,725" fill="none" stroke="#c2255c" stroke-width="3" stroke-linejoin="round"/>
+<rect x="425" y="714" width="64" height="22" rx="4" fill="#fff" stroke="#c2255c" stroke-width="2"/>
+<text x="457" y="730" font-size="12" fill="#111" font-weight="700" text-anchor="middle">330 Ω</text>
+<path d="M489,725 L540,725 L540,620 L600,620" fill="none" stroke="#c2255c" stroke-width="3" stroke-linejoin="round"/>
+<text x="457" y="755" font-size="11" fill="#666" font-weight="400" text-anchor="middle">resistencia en serie,</text>
+<text x="457" y="769" font-size="11" fill="#666" font-weight="400" text-anchor="middle">cerca de la tira</text>
+<line x1="40" y1="910" x2="70" y2="910" stroke="#d62828" stroke-width="4"/>
+<text x="78" y="915" font-size="13" fill="#333" font-weight="400" text-anchor="start">5 V</text>
+<line x1="122.5" y1="910" x2="152.5" y2="910" stroke="#e67700" stroke-width="4"/>
+<text x="160.5" y="915" font-size="13" fill="#333" font-weight="400" text-anchor="start">3.3 V</text>
+<line x1="220.0" y1="910" x2="250.0" y2="910" stroke="#222" stroke-width="4"/>
+<text x="258.0" y="915" font-size="13" fill="#333" font-weight="400" text-anchor="start">GND</text>
+<line x1="302.5" y1="910" x2="332.5" y2="910" stroke="#1c7ed6" stroke-width="4"/>
+<text x="340.5" y="915" font-size="13" fill="#333" font-weight="400" text-anchor="start">UART PMS5003</text>
+<line x1="452.5" y1="910" x2="482.5" y2="910" stroke="#2b8a3e" stroke-width="4"/>
+<text x="490.5" y="915" font-size="13" fill="#333" font-weight="400" text-anchor="start">UART MH-Z19C</text>
+<line x1="602.5" y1="910" x2="632.5" y2="910" stroke="#7048e8" stroke-width="4"/>
+<text x="640.5" y="915" font-size="13" fill="#333" font-weight="400" text-anchor="start">I²C BME280</text>
+<line x1="737.5" y1="910" x2="767.5" y2="910" stroke="#c2255c" stroke-width="4"/>
+<text x="775.5" y="915" font-size="13" fill="#333" font-weight="400" text-anchor="start">datos tira LED</text>
+<text x="40" y="950" font-size="18" fill="#111" font-weight="800" text-anchor="start">Tabla pin a pin</text>
+<rect x="36" y="961" width="1428" height="24" fill="#f1f3f5"/>
+<text x="40" y="978" font-size="13" fill="#111" font-weight="700" text-anchor="start">Componente</text>
+<text x="230" y="978" font-size="13" fill="#111" font-weight="700" text-anchor="start">Pin del componente</text>
+<text x="420" y="978" font-size="13" fill="#111" font-weight="700" text-anchor="start">Va a</text>
+<text x="640" y="978" font-size="13" fill="#111" font-weight="700" text-anchor="start">Nota</text>
+<text x="40" y="1002" font-size="13" fill="#222" font-weight="400" text-anchor="start">PMS5003</text>
+<text x="230" y="1002" font-size="13" fill="#222" font-weight="400" text-anchor="start">1 VCC</text>
+<text x="420" y="1002" font-size="13" fill="#d62828" font-weight="600" text-anchor="start">riel 5 V</text>
+<text x="640" y="1002" font-size="13" fill="#222" font-weight="400" text-anchor="start">5 V obligatorio (ventilador)</text>
+<rect x="36" y="1009" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1026" font-size="13" fill="#222" font-weight="400" text-anchor="start">PMS5003</text>
+<text x="230" y="1026" font-size="13" fill="#222" font-weight="400" text-anchor="start">2 GND</text>
+<text x="420" y="1026" font-size="13" fill="#111" font-weight="600" text-anchor="start">riel GND</text>
+<text x="640" y="1026" font-size="13" fill="#222" font-weight="400" text-anchor="start"></text>
+<text x="40" y="1050" font-size="13" fill="#222" font-weight="400" text-anchor="start">PMS5003</text>
+<text x="230" y="1050" font-size="13" fill="#222" font-weight="400" text-anchor="start">5 TX</text>
+<text x="420" y="1050" font-size="13" fill="#111" font-weight="600" text-anchor="start">GPIO16 (RX2)</text>
+<text x="640" y="1050" font-size="13" fill="#222" font-weight="400" text-anchor="start">datos del sensor al ESP32</text>
+<rect x="36" y="1057" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1074" font-size="13" fill="#222" font-weight="400" text-anchor="start">PMS5003</text>
+<text x="230" y="1074" font-size="13" fill="#222" font-weight="400" text-anchor="start">4 RX</text>
+<text x="420" y="1074" font-size="13" fill="#111" font-weight="600" text-anchor="start">GPIO17 (TX2)</text>
+<text x="640" y="1074" font-size="13" fill="#222" font-weight="400" text-anchor="start">opcional; 3 SET, 6 RESET, 7, 8 libres</text>
+<text x="40" y="1098" font-size="13" fill="#222" font-weight="400" text-anchor="start">MH-Z19C</text>
+<text x="230" y="1098" font-size="13" fill="#222" font-weight="400" text-anchor="start">Vin</text>
+<text x="420" y="1098" font-size="13" fill="#d62828" font-weight="600" text-anchor="start">riel 5 V</text>
+<text x="640" y="1098" font-size="13" fill="#222" font-weight="400" text-anchor="start">4.9 a 5.1 V</text>
+<rect x="36" y="1105" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1122" font-size="13" fill="#222" font-weight="400" text-anchor="start">MH-Z19C</text>
+<text x="230" y="1122" font-size="13" fill="#222" font-weight="400" text-anchor="start">GND</text>
+<text x="420" y="1122" font-size="13" fill="#111" font-weight="600" text-anchor="start">riel GND</text>
+<text x="640" y="1122" font-size="13" fill="#222" font-weight="400" text-anchor="start"></text>
+<text x="40" y="1146" font-size="13" fill="#222" font-weight="400" text-anchor="start">MH-Z19C</text>
+<text x="230" y="1146" font-size="13" fill="#222" font-weight="400" text-anchor="start">TX</text>
+<text x="420" y="1146" font-size="13" fill="#111" font-weight="600" text-anchor="start">GPIO26 (RX1)</text>
+<text x="640" y="1146" font-size="13" fill="#222" font-weight="400" text-anchor="start">lógica 3.3 V, directo</text>
+<rect x="36" y="1153" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1170" font-size="13" fill="#222" font-weight="400" text-anchor="start">MH-Z19C</text>
+<text x="230" y="1170" font-size="13" fill="#222" font-weight="400" text-anchor="start">RX</text>
+<text x="420" y="1170" font-size="13" fill="#111" font-weight="600" text-anchor="start">GPIO27 (TX1)</text>
+<text x="640" y="1170" font-size="13" fill="#222" font-weight="400" text-anchor="start">HD, PWM, Vo libres</text>
+<text x="40" y="1194" font-size="13" fill="#222" font-weight="400" text-anchor="start">BME280 / BME680</text>
+<text x="230" y="1194" font-size="13" fill="#222" font-weight="400" text-anchor="start">VIN o VCC</text>
+<text x="420" y="1194" font-size="13" fill="#e67700" font-weight="600" text-anchor="start">3V3 del ESP32</text>
+<text x="640" y="1194" font-size="13" fill="#222" font-weight="400" text-anchor="start">nunca a 5 V si el módulo no tiene regulador</text>
+<rect x="36" y="1201" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1218" font-size="13" fill="#222" font-weight="400" text-anchor="start">BME280 / BME680</text>
+<text x="230" y="1218" font-size="13" fill="#222" font-weight="400" text-anchor="start">GND</text>
+<text x="420" y="1218" font-size="13" fill="#111" font-weight="600" text-anchor="start">riel GND</text>
+<text x="640" y="1218" font-size="13" fill="#222" font-weight="400" text-anchor="start"></text>
+<text x="40" y="1242" font-size="13" fill="#222" font-weight="400" text-anchor="start">BME280 / BME680</text>
+<text x="230" y="1242" font-size="13" fill="#222" font-weight="400" text-anchor="start">SCL</text>
+<text x="420" y="1242" font-size="13" fill="#111" font-weight="600" text-anchor="start">GPIO22</text>
+<text x="640" y="1242" font-size="13" fill="#222" font-weight="400" text-anchor="start">I²C, dirección 0x76 o 0x77</text>
+<rect x="36" y="1249" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1266" font-size="13" fill="#222" font-weight="400" text-anchor="start">BME280 / BME680</text>
+<text x="230" y="1266" font-size="13" fill="#222" font-weight="400" text-anchor="start">SDA</text>
+<text x="420" y="1266" font-size="13" fill="#111" font-weight="600" text-anchor="start">GPIO21</text>
+<text x="640" y="1266" font-size="13" fill="#222" font-weight="400" text-anchor="start"></text>
+<text x="40" y="1290" font-size="13" fill="#222" font-weight="400" text-anchor="start">WS2812B</text>
+<text x="230" y="1290" font-size="13" fill="#222" font-weight="400" text-anchor="start">5V</text>
+<text x="420" y="1290" font-size="13" fill="#d62828" font-weight="600" text-anchor="start">riel 5 V</text>
+<text x="640" y="1290" font-size="13" fill="#222" font-weight="400" text-anchor="start">condensador 1000 µF entre 5V y GND de la tira</text>
+<rect x="36" y="1297" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1314" font-size="13" fill="#222" font-weight="400" text-anchor="start">WS2812B</text>
+<text x="230" y="1314" font-size="13" fill="#222" font-weight="400" text-anchor="start">GND</text>
+<text x="420" y="1314" font-size="13" fill="#111" font-weight="600" text-anchor="start">riel GND</text>
+<text x="640" y="1314" font-size="13" fill="#222" font-weight="400" text-anchor="start"></text>
+<text x="40" y="1338" font-size="13" fill="#222" font-weight="400" text-anchor="start">WS2812B</text>
+<text x="230" y="1338" font-size="13" fill="#222" font-weight="400" text-anchor="start">DIN</text>
+<text x="420" y="1338" font-size="13" fill="#111" font-weight="600" text-anchor="start">GPIO4</text>
+<text x="640" y="1338" font-size="13" fill="#222" font-weight="400" text-anchor="start">a través de resistencia de 330 Ω</text>
+<rect x="36" y="1345" width="1428" height="24" fill="#fafafa"/>
+<text x="40" y="1362" font-size="13" fill="#222" font-weight="400" text-anchor="start">ESP32</text>
+<text x="230" y="1362" font-size="13" fill="#222" font-weight="400" text-anchor="start">VIN / 5V</text>
+<text x="420" y="1362" font-size="13" fill="#d62828" font-weight="600" text-anchor="start">riel 5 V</text>
+<text x="640" y="1362" font-size="13" fill="#222" font-weight="400" text-anchor="start">si alimentas por USB, el riel sale de aquí (~4.7 V)</text>
+<text x="40" y="1386" font-size="13" fill="#222" font-weight="400" text-anchor="start">ESP32</text>
+<text x="230" y="1386" font-size="13" fill="#222" font-weight="400" text-anchor="start">GND</text>
+<text x="420" y="1386" font-size="13" fill="#111" font-weight="600" text-anchor="start">riel GND</text>
+<text x="640" y="1386" font-size="13" fill="#222" font-weight="400" text-anchor="start"></text>
+<text x="40" y="1426" font-size="13" fill="#333" font-weight="400" text-anchor="start">Alimentación: con todo enchufado al USB del ESP32 funciona, pero el pin VIN da ~4.7 V. Para la demo, mejor una fuente de 5 V al riel y del riel al VIN del ESP32.</text>
+<text x="40" y="1446" font-size="13" fill="#333" font-weight="400" text-anchor="start">No conectes la fuente externa y el USB a la vez (salvo que tu placa tenga diodo en VIN). 8 LEDs a brillo 60/255 consumen menos de 150 mA.</text>
+<text x="40" y="1466" font-size="13" fill="#333" font-weight="400" text-anchor="start">Si la tira parpadea o da colores raros con datos a 3.3 V: acorta el cable de DIN o usa un convertidor de nivel (74AHCT125).</text>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozYzdiMDM2Ni04YjUyLTQzNzUtODEzZC0yNGY4NTMzN2EyY2IAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaDpMZHpC+jt1PGs8cdygD/8AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpjYjMwNmQ0MS00ODc5LTQzYmEtYjVmNi1hMDBmYTE4ZTU4YmRscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoH8DWIyoUczsAmmYCgiIYWwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggflB5WgXZmvhdMBfut7pDnoSI53SgPVmGpVbeqbUeuoykZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaEemCNZFPDBIAmc92AG+MT8AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIDpyj+EisAvHYN6deGbcRoDVZ8kZKblbfVR+cq/jGEiOZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GV16Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjNjN2IwMzY2LThiNTItNDM3NS04MTNkLTI0Zjg1MzM3YTJjYi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjlhZTI4ZDk1LTk2MzgtNDdiZi05NjFhLTFkNzYwNmRlMmQzNXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCB+UHlaBdma+F0wF+63ukOehIjndKA9WYalVt6ptR66jKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggiPxx2SOjzkIJnu5S2iq9vNRUwgjarm3/G4iT+SboSnSiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggDPOqQdacHIaMdXi6+jW3hPkPhwjom8TUT41xhl7sA1N0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQMjUH6reYT474607hNX4l2TkzRZhpvuN1i2EwdTLFxZmHiJOsuNh1UJRC43USxIW5Y/pOPezLMpDDxxcdlmd1VE=</c2pa:manifest></metadata></svg>

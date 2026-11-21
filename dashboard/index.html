@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UpSense</title>
+<meta name="description" content="Le dice a la maestra cuándo abrir o cerrar la ventana del aula. Un sensor barato, corregido por humedad.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='21' r='3.2' fill='%23171717'/%3E%3Cpath d='M9.5 16.5a9 9 0 0 1 13 0M5.5 12.5a14.5 14.5 0 0 1 21 0' fill='none' stroke='%23171717' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="fondo" aria-hidden="true"><i class="f1"></i><i class="f2"></i><i class="f3"></i></div>
+<header class="barra">
+  <a class="marca" href="#demo" aria-label="UpSense">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="21" r="3.2" fill="currentColor"/><path d="M9.5 16.5a9 9 0 0 1 13 0M5.5 12.5a14.5 14.5 0 0 1 21 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    UpSense
+  </a>
+  <nav class="fuentes" aria-label="Fuente de datos">
+    <button data-fuente="demo">Ejemplo</button>
+    <button data-fuente="vivo">Mi aula</button>
+    <button data-fuente="csv">Datos</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Portada -->
+  <section class="portada" id="portada">
+    <div class="portada-txt">
+      <p class="portada-k">Monitor de aire para aulas</p>
+      <h1>Le dice a la maestra cuándo abrir la ventana.</h1>
+      <p class="portada-s">Mide el CO₂, el humo y la humedad del aula y lo convierte en una sola instrucción, que se ve en una tira de luces y en el celular. Cuesta unos US$ 65.</p>
+      <div class="portada-b">
+        <a class="primario" href="#app">Ver la demo</a>
+        <a class="link" href="#equipo">Cómo es el equipo</a>
+      </div>
+    </div>
+    <div class="escena" id="escena" aria-hidden="true">
+      <div class="tel">
+        <div class="tel-isla"></div>
+        <div class="tel-pantalla">
+          <p class="tel-meta"><i class="tel-punto"></i><span id="tHora">07:10</span></p>
+          <p class="tel-titulo" id="tTitulo">Todo bien.</p>
+          <p class="tel-razon" id="tRazon">No hace falta abrir ni cerrar la ventana.</p>
+          <div class="tel-ind"><span>Aire del aula</span><b id="tAire">Fresco</b><i><i id="tbAire"></i></i></div>
+          <div class="tel-ind"><span>Humo y polvo</span><b id="tPolvo">Limpio</b><i><i id="tbPolvo"></i></i></div>
+          <div class="tel-ind"><span>Humedad</span><b id="tHum">Normal</b><i><i id="tbHum"></i></i></div>
+          <p class="tel-nota" id="tNota"></p>
+          <p class="tel-pie">Así funciona · datos de ejemplo</p>
+        </div>
+      </div>
+      <div class="flota f-1"><span class="flota-k">1 · Mide</span><b>Entra niebla al aula</b><span class="flota-s">Humedad 97 %. El sensor de partículas se dispara.</span></div>
+      <div class="flota f-2"><span class="flota-k">2 · Corrige</span><b>Era niebla, no humo</b><span class="flota-s">Un sensor común habría mandado a cerrar.</span></div>
+      <div class="flota f-3"><span class="flota-k">3 · Avisa</span><b class="con-punto">Abran la ventana</b><span class="flota-s">El CO₂ subió. La tira de luces se pone roja.</span></div>
+      <div class="flota f-4"><span class="flota-k">4 · Mejora</span><b>El aire vuelve a estar fresco</b><span class="flota-s">La luz pasa a verde y la clase sigue.</span></div>
+      <ol class="pasos" id="pasos"><li>Mide</li><li>Corrige</li><li>Avisa</li><li>Mejora</li></ol>
+    </div>
+  </section>
+  <!-- Paneles de fuente (solo cuando se eligen) -->
+  <section id="panelCsv" class="panel" hidden>
+    <label class="soltar" id="soltar">
+      <input type="file" id="archivo" accept=".csv,text/csv">
+      <span class="soltar-t">Elegir un archivo CSV</span>
+      <span class="soltar-s">El que descarga esta app desde el equipo, o una medición junto a una estación de referencia.</span>
+    </label>
+    <p class="aviso" id="csvMsg"></p>
+  </section>
+  <section id="panelVivo" class="panel" hidden>
+    <div class="fila">
+      <input id="cfgDevice" placeholder="Dirección del equipo, p. ej. http://aire.local" aria-label="Dirección del equipo">
+      <button id="btnConectar" class="primario">Conectar</button>
+    </div>
+    <div class="fila-sec">
+      <button id="btnVapor" class="link" hidden>Simular vapor</button>
+      <button id="btnCsv" class="link">Descargar datos</button>
+    </div>
+    <p class="aviso" id="vivoMsg"></p>
+  </section>
+
+  <!-- Estado: una sola idea -->
+  <section class="estado" id="app" aria-live="polite">
+    <p class="meta"><i class="punto" id="punto"></i><span id="hora">—</span></p>
+    <h2 class="titulo" id="titulo">Cargando</h2>
+    <p class="razon" id="razon"></p>
+    <p class="contraste" id="contraste" hidden></p>
+    <div class="indic" id="indic">
+      <div class="ind">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></svg>
+        <span class="ind-t">Aire del aula</span>
+        <b class="ind-v" id="iAire">—</b>
+        <span class="ind-n" id="nAire">CO₂</span>
+        <span class="nivel"><i id="bAire"></i></span>
+      </div>
+      <div class="ind">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="1.6"/><circle cx="13" cy="5" r="1.2"/><circle cx="18" cy="9" r="1.8"/><circle cx="9" cy="13" r="1.4"/><circle cx="16" cy="16" r="1.3"/><circle cx="6" cy="19" r="1.7"/><circle cx="12" cy="20" r="1"/></svg>
+        <span class="ind-t">Humo y polvo</span>
+        <b class="ind-v" id="iPolvo">—</b>
+        <span class="ind-n" id="nPolvo">Partículas</span>
+        <span class="nivel"><i id="bPolvo"></i></span>
+      </div>
+      <div class="ind">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3.5 4.3 6 7.6 6 10.6a6 6 0 0 1-12 0c0-3 2.5-6.3 6-10.6z"/></svg>
+        <span class="ind-t">Humedad</span>
+        <b class="ind-v" id="iHum">—</b>
+        <span class="ind-n" id="nHum">Humedad relativa</span>
+        <span class="nivel"><i id="bHum"></i></span>
+      </div>
+    </div>
+    <div class="acciones">
+      <button class="link" id="btnMas" aria-expanded="false">Ver números exactos</button>
+      <button class="link" id="btnProyectar">Proyectar en pantalla completa</button>
+    </div>
+    <dl class="detalle" id="detalle" hidden>
+      <div><dt>Aire del aula</dt><dd id="dAire">—</dd></div>
+      <div><dt>Humo y polvo</dt><dd id="dPolvo">—</dd></div>
+      <div><dt>Humedad</dt><dd id="dHum">—</dd></div>
+      <div><dt>Riesgo de contagio</dt><dd id="dRiesgo">—</dd></div>
+    </dl>
+  </section>
+
+  <!-- Reproductor de la mañana de ejemplo -->
+  <section class="jugador" id="jugador" hidden>
+    <button id="btnPlay" class="link play">Pausar</button>
+    <input type="range" id="barra" min="0" max="1000" value="0" aria-label="Hora de la mañana">
+    <div class="momentos" id="momentos"></div>
+  </section>
+
+  <!-- Prueba: una gráfica -->
+  <section class="prueba" id="prueba" hidden>
+    <h2 id="pruebaTitulo"></h2>
+    <p class="sub" id="pruebaSub"></p>
+    <div class="leyenda">
+      <span><i class="ln crudo"></i>Sensor sin corregir</span>
+      <span><i class="ln ventana"></i>UpSense</span>
+      <span id="leyRef"><i class="ln ref"></i>Equipo de referencia</span>
+    </div>
+    <div class="graf" id="gPm"></div>
+  </section>
+
+  <!-- El equipo -->
+  <section class="equipo" id="equipo">
+    <h2>El equipo</h2>
+    <p class="sub">Una placa ESP32, tres sensores y una tira de luces, conectados por USB a cualquier cargador. Cuesta unos US$ 65 en piezas.</p>
+    <div class="eq-grid">
+      <figure class="aparato" aria-label="Dibujo del equipo UpSense">
+        <svg viewBox="0 0 320 220" role="img" aria-label="Caja del equipo con su tira de luces">
+          <defs><filter id="brillo" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+          <rect x="30" y="34" width="260" height="150" rx="22" class="caja"/>
+          <g class="rejilla"><path d="M58 62h48M58 72h48M58 82h48M58 92h48"/></g>
+          <circle cx="250" cy="74" r="10" class="sensor"/><circle cx="250" cy="74" r="4" class="sensor-c"/>
+          <text x="58" y="124" class="marca-txt">UPSENSE</text>
+          <rect x="58" y="146" width="204" height="16" rx="8" class="led-base"/>
+          <rect x="66" y="150" width="188" height="8" rx="4" class="led-glow" filter="url(#brillo)"/>
+          <g class="leds"><rect x="66" y="150" width="20" height="8" rx="3"/><rect x="90" y="150" width="20" height="8" rx="3"/><rect x="114" y="150" width="20" height="8" rx="3"/><rect x="138" y="150" width="20" height="8" rx="3"/><rect x="162" y="150" width="20" height="8" rx="3"/><rect x="186" y="150" width="20" height="8" rx="3"/><rect x="210" y="150" width="20" height="8" rx="3"/><rect x="234" y="150" width="20" height="8" rx="3"/></g>
+          <path d="M160 184v18" class="cable"/>
+        </svg>
+        <figcaption>La tira de luces toma el mismo color que esta página: la maestra no necesita mirar la pantalla.</figcaption>
+      </figure>
+      <ol class="flujo">
+        <li><span class="n">Mide</span><h3>Tres sensores</h3><p>CO₂ (MH-Z19C) para saber cuánto aire ya se respiró, partículas (PMS5003) para el humo y el polvo, y temperatura, humedad y presión (BME280) para corregir.</p></li>
+        <li><span class="n">Corrige y decide</span><h3>Dentro del propio equipo</h3><p>El ESP32 corrige las partículas por humedad y elige una sola instrucción. Funciona sin internet.</p></li>
+        <li><span class="n">Avisa</span><h3>Luces y esta página</h3><p>La tira de 8 LEDs se ve desde el fondo del aula. Por Wi-Fi, esta página muestra lo mismo con detalle.</p></li>
+      </ol>
+    </div>
+    <!-- VIDEO: pegue en data-src un enlace de YouTube, de Google Drive o un archivo (ej. video/demo.mp4) -->
+    <div class="video" id="video" data-src="">
+      <p><b>Video de la demo</b><span>Aquí va el equipo funcionando en el aula de prueba.</span></p>
+    </div>
+    <div class="acciones">
+      <a class="link" href="https://github.com/moonshin3z/UpSense" target="_blank" rel="noopener">Código y guía de armado en GitHub</a>
+      <a class="link" href="https://github.com/moonshin3z/UpSense/blob/main/docs/conexiones-sueltas.png" target="_blank" rel="noopener">Diagrama de conexiones</a>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="como" id="como">
+    <h2>Cómo funciona</h2>
+    <div class="tres">
+      <article>
+        <span class="n">01</span>
+        <h3>El sensor barato se confunde con la humedad</h3>
+        <p>Un contador de partículas de US$ 15 ve gotitas de agua como si fueran humo. En las mañanas lluviosas de Guatemala da falsas alarmas.</p>
+      </article>
+      <article>
+        <span class="n">02</span>
+        <h3>UpSense corrige la lectura</h3>
+        <p>Un modelo liviano con temperatura, humedad y presión corrige el error dentro del propio equipo, como proponen <a href="https://doi.org/10.3390/s26216718" target="_blank" rel="noopener">Sitarek et al. (2026)</a>.</p>
+      </article>
+      <article>
+        <span class="n">03</span>
+        <h3>El CO₂ dice cuándo ventilar</h3>
+        <p>El CO₂ indica cuánto aire ya respiraron otros y, con él, el riesgo de contagio, siguiendo a <a href="https://doi.org/10.1098/rsif.2024.0270" target="_blank" rel="noopener">Vouriot et al. (2024)</a>.</p>
+      </article>
+    </div>
+    <p class="nota" id="notaDatos">Datos de ejemplo simulados; falta validar con una medición real junto a una estación de referencia.</p>
+  </section>
+</main>
+
+<footer>UpSense · Monitor de aire para aulas, ≈ US$ 65 · Hackathon Open2, Guatemala</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

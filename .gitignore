@@ -1,0 +1,9 @@
+.pio/
+.vscode/
+__pycache__/
+*.pyc
+firmware/test/host/a.out
+firmware/test/host/test_host
+.DS_Store
+# Copia local de config con tu red WiFi real
+firmware/include/config.local.h

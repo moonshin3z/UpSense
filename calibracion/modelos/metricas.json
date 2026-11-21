@@ -1,0 +1,69 @@
+{
+ "fuente": "SINTETICO",
+ "n_entrenamiento": 6480,
+ "n_prueba": 2160,
+ "umbral_alarma": 35.4,
+ "recomendado": "polinomio",
+ "metodos": {
+  "crudo": {
+   "r2": -5.991,
+   "rmse": 41.94,
+   "mae": 29.87,
+   "sesgo": 29.87,
+   "falsas_alarmas_pct": 45.8,
+   "alarmas_perdidas_pct": 0.0,
+   "mae_rh_mayor_75": 45.06,
+   "tam_json_kb": null
+  },
+  "epa": {
+   "r2": -2.277,
+   "rmse": 28.71,
+   "mae": 15.07,
+   "sesgo": 14.84,
+   "falsas_alarmas_pct": 24.8,
+   "alarmas_perdidas_pct": 0.0,
+   "mae_rh_mayor_75": 26.69,
+   "tam_json_kb": null
+  },
+  "kohler": {
+   "r2": 0.929,
+   "rmse": 4.23,
+   "mae": 2.79,
+   "sesgo": 2.0,
+   "falsas_alarmas_pct": 3.6,
+   "alarmas_perdidas_pct": 4.2,
+   "mae_rh_mayor_75": 4.45,
+   "tam_json_kb": 0.5
+  },
+  "polinomio": {
+   "r2": 0.955,
+   "rmse": 3.35,
+   "mae": 2.09,
+   "sesgo": 0.41,
+   "falsas_alarmas_pct": 1.7,
+   "alarmas_perdidas_pct": 4.6,
+   "mae_rh_mayor_75": 2.97,
+   "tam_json_kb": 0.7
+  },
+  "bosque": {
+   "r2": 0.909,
+   "rmse": 4.8,
+   "mae": 2.15,
+   "sesgo": 0.15,
+   "falsas_alarmas_pct": 2.2,
+   "alarmas_perdidas_pct": 3.8,
+   "mae_rh_mayor_75": 3.14,
+   "tam_json_kb": 159.1
+  },
+  "gbm": {
+   "r2": 0.952,
+   "rmse": 3.48,
+   "mae": 2.03,
+   "sesgo": 0.52,
+   "falsas_alarmas_pct": 2.8,
+   "alarmas_perdidas_pct": 3.1,
+   "mae_rh_mayor_75": 2.76,
+   "tam_json_kb": 56.5
+  }
+ }
+}
