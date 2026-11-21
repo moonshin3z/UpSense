@@ -83,12 +83,14 @@ export function procesarSerie(filas, modelo) {
     out.push(m);
     // ventana de 5 min (al menos la muestra actual si los datos son más espaciados)
     const v5 = Math.min(r.t - 5 * 60e3, r.t - 1);
-    const pmA = media(out, 'corr', v5, r.t), pmB = media(out, 'corr', r.t - 15 * 60e3, r.t - 9 * 60e3);
+    // Tendencia: contra hace 9-15 min; si la medición es más corta, contra lo anterior a 5 min
+    const antes = (k) => media(out, k, r.t - 15 * 60e3, r.t - 9 * 60e3) ?? media(out, k, -Infinity, v5);
+    const pmA = media(out, 'corr', v5, r.t), pmB = antes('corr');
     const co2 = media(out, 'co2', v5, r.t);
     const rec = recomendar({ co2, pm25: pausa ? null : pmA, fuentePm: 'interior', pm25Tendencia: pmA != null && pmB != null ? pmA - pmB : null }, est);
     Object.assign(m, { accion: rec.accion, f: rec.f, rr: rec.riesgoRelativo });
     // Lo que haría la maestra con el sensor sin corregir (mismos datos, PM crudo)
-    const cA = media(out, 'cf1', v5, r.t), cB = media(out, 'cf1', r.t - 15 * 60e3, r.t - 9 * 60e3);
+    const cA = media(out, 'cf1', v5, r.t), cB = antes('cf1');
     const recC = recomendar({ co2, pm25: cA, fuentePm: 'interior', pm25Tendencia: cA != null && cB != null ? cA - cB : null }, estCrudo);
     crudo.push({ t: r.t, accion: recC.accion });
   }

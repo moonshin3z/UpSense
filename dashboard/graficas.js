@@ -28,7 +28,9 @@ export function lineas(el, o) {
   for (const b of o.bandas || []) {
     const a = Math.max(x(b.t0), pl), z = Math.min(x(b.t1), W - pr);
     if (z > a) s += `<rect x="${a}" y="${pt}" width="${z - a}" height="${H - pt - pb}" fill="${b.color}"/>`;
+    if (b.texto && z - a >= 7 * b.texto.length) s += `<text x="${a + 8}" y="${pt + 32}" font-size="11" fill="var(--muted)">${esc(b.texto)}</text>`;
   }
+  if (o.unidadEje) s += `<text x="${pl}" y="${pt + 14}" font-size="10.5" fill="var(--muted)" dx="6">${esc(o.unidadEje)}</text>`;
   for (const f of [0, 0.5, 1]) {
     s += `<line x1="${pl}" x2="${W - pr}" y1="${yI(maxI * f)}" y2="${yI(maxI * f)}" stroke="var(--grid)"/>`;
     s += `<text x="${pl - 6}" y="${yI(maxI * f) + 4}" font-size="11" text-anchor="end" fill="var(--muted)">${Math.round(maxI * f)}</text>`;
@@ -65,6 +67,12 @@ export function lineas(el, o) {
   for (let i = 1; i < etiquetas.length; i++) if (etiquetas[i].y - etiquetas[i - 1].y < 14) etiquetas[i].y = etiquetas[i - 1].y + 14;
   for (const et of etiquetas) {
     s += `<text x="${Math.min(et.x + 6, W - pr - 2)}" y="${et.y + 4}" font-size="11" font-weight="600" fill="var(--fg)" text-anchor="${et.x + 60 > W - pr ? 'end' : 'start'}" paint-order="stroke" stroke="var(--card)" stroke-width="4">${esc(et.txt)}</text>`;
+  }
+  for (const m of o.marcas || []) {
+    if (m.t < t0 || m.t > t1) continue;
+    const mx = x(m.t), my = Math.max(pt + 12, yI(m.v) - 12);
+    const anc = mx > W - pr - 90 ? 'end' : mx < pl + 90 ? 'start' : 'middle';
+    s += `<text x="${mx}" y="${my}" font-size="11.5" font-weight="600" fill="var(--fg)" text-anchor="${anc}" paint-order="stroke" stroke="var(--card)" stroke-width="4">${esc(m.texto)}</text>`;
   }
   if (o.cursor != null && o.cursor >= t0 && o.cursor <= t1) {
     s += `<line x1="${x(o.cursor)}" x2="${x(o.cursor)}" y1="${pt}" y2="${H - pb}" stroke="var(--fg)" stroke-width="1.5" opacity=".35"/>`;

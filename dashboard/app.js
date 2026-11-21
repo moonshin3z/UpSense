@@ -107,7 +107,7 @@ function renderGrafica() {
   for (const x of ms) {
     if (!(x.alerta === 'niebla' || x.alerta === 'subida')) continue;
     const last = bandas[bandas.length - 1];
-    if (last && x.t - last.t1 <= d.paso * 1.5) last.t1 = x.t + d.paso; else bandas.push({ t0: x.t, t1: x.t + d.paso, color: 'var(--humo)' });
+    if (last && x.t - last.t1 <= d.paso * 1.5) last.t1 = x.t + d.paso; else bandas.push({ t0: x.t, t1: x.t + d.paso, color: 'var(--humo)', texto: 'Vapor: en pausa' });
   }
   const tieneRef = ms.some((x) => x.ref != null);
   $('leyRef').hidden = !tieneRef;
@@ -117,12 +117,23 @@ function renderGrafica() {
     series: [
       { nombre: 'Sin corregir', data: ms.map((x) => [x.t, x.cf1]), color: 'var(--s-crudo)', ancho: 2 },
       ...(tieneRef ? [{ nombre: 'Referencia', data: ms.map((x) => [x.t, x.ref]), color: 'var(--s-ref)', ancho: 1.5, guion: '2 4' }] : []),
-      { nombre: 'UpSense', data: ms.map((x) => [x.t, x.corr]), color: 'var(--s-ventana)', ancho: 2.25 },
+      // En pausa por humedad no se dibuja UpSense: no hay lectura confiable (evita un escalón falso)
+      { nombre: 'UpSense', data: ms.map((x) => [x.t, x.pausa ? null : x.corr]), color: 'var(--s-ventana)', ancho: 2.25 },
     ],
     lineasH: [{ v: PM_SENSIBLES, color: 'var(--faint)', texto: 'alarma' }],
+    unidadEje: 'PM2.5 · µg/m³', marcas: marcasHumo(ms),
     cursor: vivo ? null : st.tc, sinEtiquetas: true,
   });
 }
+
+// Humo de verdad (sin humedad que lo explique) y UpSense lo marca sobre el umbral
+function marcasHumo(ms) {
+  if (st.fuente !== 'csv') return [];
+  // Solo si la instrucción de verdad cambió (cerrar o ventilar poco) durante humo sin humedad
+  const aviso = ms.find((x) => !x.pausa && x.corr > PM_SENSIBLES && (x.accion === 'cerrar' || x.accion === 'ventilar_corto'));
+  return aviso ? [{ t: aviso.t, v: aviso.corr, texto: 'Humo real: UpSense avisa' }] : [];
+}
+const durTxt = (ms) => { const s = Math.round(ms / 1000); if (s < 60) return `${s} s`; const m = Math.round(s / 60); return m < 90 ? `${m} min` : `${fmt(m / 60, 1).replace('.', ',')} h`; };
 
 function renderVacio() {
   $('titulo').textContent = st.fuente === 'csv' ? 'Elija un archivo.' : st.fuente === 'vivo' ? 'Conecte su equipo.' : 'Cargando';
@@ -152,14 +163,25 @@ function renderPrueba() {
     $('pruebaSub').textContent = 'La línea clara es lo que mide el sensor solo; la oscura, lo que corrige UpSense.';
     return;
   }
-  const ms = d.muestras, min = d.paso / 60e3;
+  const ms = d.muestras, paso = d.paso;
   const ref = ms.some((x) => x.ref != null);
-  const falsa = (k) => ms.filter((x) => x[k] != null && x[k] > PM_SENSIBLES && (ref ? x.ref != null && x.ref <= PM_SENSIBLES : true)).length * min / 60;
+  const sobre = (x, k) => x[k] != null && x[k] > PM_SENSIBLES;
   const mae = (k) => { const xs = ms.filter((x) => x[k] != null && x.ref != null); return xs.length ? xs.reduce((s, x) => s + Math.abs(x[k] - x.ref), 0) / xs.length : null; };
-  $('pruebaTitulo').textContent = ref
-    ? `Sin corregir: ${fmt(falsa('cf1'), 1)} h de falsa alarma. Con UpSense: ${fmt(falsa('corr'), 1)} h.`
-    : `Sin corregir: ${fmt(falsa('cf1'), 1)} h sobre el umbral de alarma. Con UpSense: ${fmt(falsa('corr'), 1)} h.`;
-  $('pruebaSub').textContent = `${ms.length.toLocaleString('es-GT')} lecturas en ${fmt((t1() - t0()) / 3600e3, 1)} h.` + (ref ? ` Error medio contra la referencia: ${fmt(mae('cf1'), 1)} µg/m³ sin corregir y ${fmt(mae('corr'), 1)} con UpSense.` : '');
+  const total = `${ms.length.toLocaleString('es-GT')} lecturas en ${durTxt(t1() - t0() + paso)}.`;
+  if (ref) {
+    const falsa = (k) => ms.filter((x) => sobre(x, k) && x.ref != null && x.ref <= PM_SENSIBLES).length * paso;
+    $('pruebaTitulo').textContent = `Sin corregir: ${durTxt(falsa('cf1'))} de falsa alarma. Con UpSense: ${durTxt(falsa('corr'))}.`;
+    $('pruebaSub').textContent = `${total} Error medio contra la referencia: ${fmt(mae('cf1'), 1)} µg/m³ sin corregir y ${fmt(mae('corr'), 1)} con UpSense.`;
+    return;
+  }
+  // Sin referencia: alarma con humedad alta = falsa; sin humedad que la explique = humo real
+  const vaporCrudo = ms.filter((x) => x.pausa && sobre(x, 'cf1')).length * paso;
+  const humo = ms.filter((x) => !x.pausa && sobre(x, 'cf1'));
+  const humoUp = humo.filter((x) => sobre(x, 'corr')).length * paso;
+  $('pruebaTitulo').textContent = vaporCrudo
+    ? `Con vapor, el sensor sin corregir marcó ${durTxt(vaporCrudo)} de alarma. UpSense, 0 min.`
+    : `Sin corregir: ${durTxt(ms.filter((x) => sobre(x, 'cf1')).length * paso)} sobre el umbral. Con UpSense: ${durTxt(ms.filter((x) => sobre(x, 'corr')).length * paso)}.`;
+  $('pruebaSub').textContent = total + (humo.length ? (humoUp ? ` Con humo real, la lectura de UpSense también pasó el umbral (${durTxt(humoUp)}).` : ' Con humo real, la lectura de UpSense quedó bajo el umbral.') : '');
 }
 
 // ---------------------------------------------------------------- reproductor
