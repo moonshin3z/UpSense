@@ -361,7 +361,7 @@ function ponerVideo() {
 
 async function main() {
   ponerVideo();
-  try { modelo = await (await fetch('modelo.json', { cache: 'no-store' })).json(); } catch { modelo = null; }
+  try { modelo = await leerJson('modelo.json', 4000); } catch { modelo = null; }
   document.querySelectorAll('.fuentes button').forEach((b) => (b.onclick = () => usarFuente(b.dataset.fuente)));
   $('btnPlay').onclick = () => ponerPlay(!st.play);
   $('barra').oninput = (e) => { if (!st.datos?.muestras.length) return; ponerPlay(false); st.tc = t0() + (e.target.value / 1000) * (t1() - t0()); render(); };
