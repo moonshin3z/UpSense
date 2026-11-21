@@ -359,6 +359,7 @@ function ponerVideo() {
   }
   if (el.tagName === 'IFRAME') { el.allow = 'autoplay; fullscreen; picture-in-picture'; el.allowFullscreen = true; el.title = 'Video de la demo de UpSense'; }
   caja.replaceChildren(el); caja.classList.add('lleno');
+  caja.classList.toggle('vertical', /shorts\//.test(src));
 }
 
 async function main() {

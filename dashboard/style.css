@@ -261,3 +261,4 @@ body.presentar .equipo { display: none; }
 .tel-pie { margin-top: auto; }
 @media (max-width: 760px) { .escena { height: 600px; } }
 .portada-s1 { display: block; color: var(--fg); font-weight: 600; margin-bottom: 6px; }
+.video.vertical { aspect-ratio: 9 / 16; width: min(100%, 340px); margin-left: auto; margin-right: auto; border: 0; background: none; }

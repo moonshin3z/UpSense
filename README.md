@@ -6,6 +6,8 @@ Un monitor de aire de unos US$ 65 que mide el CO₂, las partículas y la humeda
 
 **App web (funciona sin el equipo, con datos de ejemplo):** https://ventana-aula.vercel.app
 
+**Video de la demo:** https://youtube.com/shorts/rBpN5EhJVPQ
+
 ![UpSense en la compu](docs/capturas/upsense-compu.png)
 
 ## El problema
