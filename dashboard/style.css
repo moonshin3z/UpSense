@@ -260,3 +260,4 @@ body.presentar .equipo { display: none; }
 .escena { height: 610px; align-content: start; padding-top: 6px; }
 .tel-pie { margin-top: auto; }
 @media (max-width: 760px) { .escena { height: 600px; } }
+.portada-s1 { display: block; color: var(--fg); font-weight: 600; margin-bottom: 6px; }

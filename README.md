@@ -1,6 +1,6 @@
 # UpSense
 
-**Le dice a la maestra cuándo abrir o cerrar la ventana del aula.**
+**Precisión de 600 dólares, por 65.** Un sensor barato que piensa como uno caro: le dice a la maestra cuándo abrir o cerrar la ventana del aula.
 
 Un monitor de aire de unos US$ 65 que mide el CO₂, las partículas y la humedad del aula, y lo traduce en una sola instrucción: *abran la ventana*, *ábranla un poco*, *ciérrenla* o *abran cinco minutos y cierren*. La respuesta se ve en una tira de luces desde el fondo del salón y en una página web.
 
