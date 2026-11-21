@@ -254,7 +254,9 @@ async function cargarArchivo(file) {
 }
 
 // --- en vivo
-const baseVivo = () => (st.vivo.base || '').replace(/\/$/, '');
+// Acepta "10.0.0.5" o "aire.local" sin http:// (si no, fetch lo toma como ruta de esta página)
+const conHttp = (v) => { v = (v || '').trim(); return v && !/^https?:\/\//i.test(v) ? `http://${v}` : v; };
+const baseVivo = () => conHttp(st.vivo.base).replace(/\/$/, '');
 function pararVivo() { clearInterval(st.vivo.timer); st.vivo.timer = null; }
 async function iniciarVivo() {
   const msg = $('vivoMsg');
@@ -262,7 +264,7 @@ async function iniciarVivo() {
   st.datos = { nombre: 'En vivo', muestras: [], crudo: [], paso: 2000 };
   if (location.protocol === 'https:' && baseVivo().startsWith('http:')) {
     msg.className = 'aviso error';
-    msg.textContent = 'Por seguridad, el navegador no deja leer el equipo desde esta página. Abra la app desde el propio equipo, en http://aire.local.';
+    msg.textContent = `Por seguridad, el navegador no deja leer el equipo desde esta página. Escriba ${baseVivo()} en la barra de direcciones del navegador: la app se abre desde el propio equipo.`;
     return;
   }
   try { st.vivo.filas = historialAMuestras(await leerJson(`${baseVivo()}/api/history`, 5000)); } catch { /* sigue sin historial */ }
